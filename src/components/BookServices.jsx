@@ -1,7 +1,7 @@
 import Header from './Header';
 import '../App.css';
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Add this import
 
 export default function BookService() {
     const [formData, setFormData] = useState({
@@ -14,7 +14,7 @@ export default function BookService() {
         specialRequests: '',
     });
 
-    const history = useHistory();
+    const navigate = useNavigate(); // Use useNavigate instead of useHistory
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -37,7 +37,7 @@ export default function BookService() {
 
         if (response.ok) {
             alert('Booking submitted successfully!');
-            history.push('/'); // Redirect after successful submission
+            navigate('/'); // Use navigate instead of history.push
         } else {
             alert('Failed to submit booking.');
         }

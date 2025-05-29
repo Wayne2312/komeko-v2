@@ -7,6 +7,7 @@ import BookService from './components/BookServices'
 import Menu from './Mcomponents/Menu'
 import Contact from './Mcomponents/Contact'
 import { Routes, Route } from 'react-router-dom'
+import Auth from './components/Auth'
 import './App.css'
 import React from 'react'
 
@@ -26,6 +27,7 @@ export default function App() {
       <Route path="/menu" element={<Menu />} />
       <Route path="/Bookingservices" element={<BookService />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/sign-in" element={<Auth />} />
     </Routes>
   )
 }

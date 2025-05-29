@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Header from './Header';
 import '../App.css';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Change here
 
 export default function Auth() {
     const [isLogin, setIsLogin] = useState(true);
@@ -11,7 +11,7 @@ export default function Auth() {
         password: '',
     });
 
-    const history = useHistory();
+    const navigate = useNavigate(); // Change here
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -39,7 +39,7 @@ export default function Auth() {
                 const data = await response.json();
                 localStorage.setItem('token', data.access_token);
                 alert('Login successful!');
-                history.push('/'); // Redirect after successful login
+                navigate('/'); // Change here
             } else {
                 alert('Signup successful! You can now log in.');
                 setIsLogin(true); // Switch to login mode

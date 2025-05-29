@@ -1,12 +1,18 @@
 import React from 'react';
 import '../App.css'; // Ensure Tailwind CSS is imported
 
+// Import images
+import saladbar from '../assets/image/saladbar.jpg';
+import dessert from '../assets/image/Dessert.jpg';
+import mainDish from '../assets/image/Main Dish.jpg';
+import cocktails from '../assets/image/cocktails.jpg';
+
 export default function WhatWeDo() {
     const items = [
-        { label: "Salad Bar", image: "../assets/image/saladbar.jpg" },
-        { label: "Dessert Bar", image: "../assets/image/Dessert.jpg" },
-        { label: "Main Dish", image: "../assets/image/Main Dish.jpg" },
-        { label: "Cocktails", image: "../assets/image/cocktails.jpg" },
+        { label: "Salad Bar", image: saladbar },
+        { label: "Dessert Bar", image: dessert },
+        { label: "Main Dish", image: mainDish },
+        { label: "Cocktails", image: cocktails },
     ];
 
     return (
@@ -29,4 +35,3 @@ export default function WhatWeDo() {
         </section>
     );
 }
-  

@@ -1,21 +1,54 @@
 import '../App.css';
-import { Link } from 'react-router-dom';
-import React from 'react'; 
-
+import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { FaUserCircle } from 'react-icons/fa'; // Import the user profile icon
 
 export default function Header() {
+    const navigate = useNavigate();
+
     return (
-      <header className="bg-white shadow-md">
+      <header className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold text-green-700">Komeko Catering</h1>
           
-          <nav className="space-x-4">
-            <Link to="/" className="text-gray-700 hover:text-green-600">Home</Link>
-            <Link to="/menu" className="text-gray-700 hover:text-green-600">Menu</Link>
-            <Link to="/Bookingservices" className="text-gray-700 hover:text-green-600">Booking</Link>
-            <Link to="/contact" className="text-gray-700 hover:text-green-600">Contact</Link>
+          <nav className="space-x-4 flex items-center">
+            <button 
+              onClick={() => navigate('/')} 
+              className="px-4 py-2 bg-green-200 text-gray-700 rounded hover:bg-green-600 hover:text-white"
+            >
+              Home
+            </button>
+            <button 
+              onClick={() => navigate('/menu')} 
+              className="px-4 py-2 bg-green-200 text-gray-700 rounded hover:bg-green-600 hover:text-white"
+            >
+              Menu
+            </button>
+            <button 
+              onClick={() => navigate('/Bookingservices')} 
+              className="px-4 py-2 bg-green-200 text-gray-700 rounded hover:bg-green-600 hover:text-white"
+            >
+              Booking
+            </button>
+            <button 
+              onClick={() => navigate('/contact')} 
+              className="px-4 py-2 bg-green-200 text-gray-700 rounded hover:bg-green-600 hover:text-white"
+            >
+              Contact
+            </button>
+
+            {/* User Profile Section */}
+            <div className="relative">
+              <button 
+                onClick={() => navigate('/sign-in')} 
+                className="flex items-center space-x-2 px-4 py-2 bg-blue-200 text-gray-700 rounded hover:bg-blue-600 hover:text-white"
+              >
+                <FaUserCircle className="text-xl" /> {/* User profile icon */}
+                <span>Sign In</span>
+              </button>
+            </div>
           </nav>
         </div>
       </header>
     );
-  }
+}

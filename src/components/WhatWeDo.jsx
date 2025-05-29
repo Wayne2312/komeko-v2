@@ -11,7 +11,6 @@ export default function WhatWeDo() {
 
     return (
         <section className="bg-white py-16 px-6 text-center">
-            <h2 className="text-2xl font-semibold mb-4">What We Do</h2>
             <p className="text-gray-600 mb-10">Celebrate important moments with Komeko Catering</p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">

@@ -1,3 +1,5 @@
+import '../App.css';
+
 export default function Footer() {
     return (
       <footer className="bg-green-700 text-white py-6">

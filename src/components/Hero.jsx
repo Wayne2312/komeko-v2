@@ -1,3 +1,5 @@
+import '../App.css';
+
 export default function Hero() {
     return (
       <section className="bg-green-50 py-20">

@@ -1,3 +1,5 @@
+import '../App.css';
+
 const services = [
     { title: "Corporate Events", desc: "Professional catering for your business events and conferences. We are experienced in product launches and office parties and conferences as well as luncheons." },
     { title: "Weddings", desc: "Make your special day unforgettable with our elegant and flavorful wedding menus. Our team works closely with you to craft a dining experience that complements your celebration, offering everything from sophisticated plated dinners to beautifully presented buffets, all tailored to your unique style and preferences." },

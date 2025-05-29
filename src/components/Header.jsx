@@ -1,3 +1,7 @@
+import '../App.css';
+import { Link } from 'react-router-dom';
+import React from 'react'; 
+
 
 export default function Header() {
     return (
@@ -6,10 +10,10 @@ export default function Header() {
           <h1 className="text-2xl font-bold text-green-700">Komeko Catering</h1>
           
           <nav className="space-x-4">
-            <a href="#" className="text-gray-700 hover:text-green-600">Home</a>
-            <a href="#" className="text-gray-700 hover:text-green-600">Menu</a>
-            <a href="#" className="text-gray-700 hover:text-green-600">Services</a>
-            <a href="#" className="text-gray-700 hover:text-green-600">Contact</a>
+            <Link to="/" className="text-gray-700 hover:text-green-600">Home</Link>
+            <Link to="/menu" className="text-gray-700 hover:text-green-600">Menu</Link>
+            <Link to="/Bookingservices" className="text-gray-700 hover:text-green-600">Booking</Link>
+            <Link to="/contact" className="text-gray-700 hover:text-green-600">Contact</Link>
           </nav>
         </div>
       </header>

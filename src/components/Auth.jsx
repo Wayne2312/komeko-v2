@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { auth } from './Firebase';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'; // Import authentication methods
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import Header from './Header';
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
@@ -25,12 +25,10 @@ export default function Auth() {
         try {
             if (isLogin) {
                 const userCredential = await signInWithEmailAndPassword(auth, formData.email, formData.password);
-                const user = userCredential.user;
                 alert('Login successful!');
                 navigate('/');
             } else {
                 const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
-                const user = userCredential.user;
                 alert('Signup successful! You can now log in.');
                 setIsLogin(true);
             }
@@ -48,30 +46,30 @@ export default function Auth() {
                         {isLogin ? 'Login' : 'Sign Up'}
                     </h2>
                     <form className="space-y-4" onSubmit={handleSubmit}>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700">Username</label>
-                            <input
-                                type="text"
-                                name="username"
-                                required
-                                value={formData.username}
-                                onChange={handleChange}
-                                className="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-red-500 focus:border-red-500"
-                            />
-                        </div>
                         {!isLogin && (
                             <div>
-                                <label className="block text-sm font-medium text-gray-700">Email Address</label>
+                                <label className="block text-sm font-medium text-gray-700">Username</label>
                                 <input
-                                    type="email"
-                                    name="email"
+                                    type="text"
+                                    name="username"
                                     required
-                                    value={formData.email}
+                                    value={formData.username}
                                     onChange={handleChange}
                                     className="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-red-500 focus:border-red-500"
                                 />
                             </div>
                         )}
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Email Address</label>
+                            <input
+                                type="email"
+                                name="email"
+                                required
+                                value={formData.email}
+                                onChange={handleChange}
+                                className="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-red-500 focus:border-red-500"
+                            />
+                        </div>
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Password</label>
                             <input

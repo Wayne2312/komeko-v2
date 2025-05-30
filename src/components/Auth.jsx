@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { auth } from './Firebase';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'; // Import authentication methods
 import Header from './Header';
 import '../App.css';
-import { useNavigate } from 'react-router-dom'; // Change here
+import { useNavigate } from 'react-router-dom';
 
 export default function Auth() {
     const [isLogin, setIsLogin] = useState(true);
@@ -11,7 +13,7 @@ export default function Auth() {
         password: '',
     });
 
-    const navigate = useNavigate(); // Change here
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -20,32 +22,20 @@ export default function Auth() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const url = isLogin ? 'http://127.0.0.1:8000/token/' : 'http://127.0.0.1:8000/signup/';
-        
-        const body = isLogin
-            ? new URLSearchParams({ username: formData.username, password: formData.password })
-            : JSON.stringify({ username: formData.username, email: formData.email, password: formData.password });
-
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': isLogin ? 'application/x-www-form-urlencoded' : 'application/json',
-            },
-            body: body,
-        });
-
-        if (response.ok) {
+        try {
             if (isLogin) {
-                const data = await response.json();
-                localStorage.setItem('token', data.access_token);
+                const userCredential = await signInWithEmailAndPassword(auth, formData.email, formData.password);
+                const user = userCredential.user;
                 alert('Login successful!');
-                navigate('/'); // Change here
+                navigate('/');
             } else {
+                const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+                const user = userCredential.user;
                 alert('Signup successful! You can now log in.');
-                setIsLogin(true); // Switch to login mode
+                setIsLogin(true);
             }
-        } else {
-            alert('Failed to authenticate. Please check your credentials.');
+        } catch (error) {
+            alert(error.message);
         }
     };
 
